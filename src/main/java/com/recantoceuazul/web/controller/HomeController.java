@@ -1,6 +1,8 @@
 package com.recantoceuazul.web.controller;
 
+import com.recantoceuazul.web.model.Abastecimento;
 import com.recantoceuazul.web.model.Administrador;
+import com.recantoceuazul.web.model.Setor;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,15 +15,18 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-    private final String API_URL = "http://localhost:8081/api/administrador";
+    private final String API_URL = "http://localhost:8081/api/";
     private final RestTemplate restTemplate = new RestTemplate();
 
     @GetMapping("/")
     public String index(Model model) {
-        ResponseEntity<Administrador[]> response = restTemplate.getForEntity(API_URL, Administrador[].class);
-        List<Administrador> administradores = Arrays.asList(response.getBody());
-        model.addAttribute("administradores", administradores);
-        model.addAttribute("administrador", new Administrador());
+        ResponseEntity<Abastecimento[]> response = restTemplate.getForEntity(API_URL + "abastecimentos", Abastecimento[].class);
+        List<Abastecimento> abastecimentos = Arrays.asList(response.getBody());
+        model.addAttribute("abastecimentos", abastecimentos);
+        ResponseEntity<Setor[]> responseSetor = restTemplate.getForEntity(API_URL + "setor", Setor[].class);
+        List<Setor> setores = Arrays.asList(responseSetor .getBody());
+        model.addAttribute("setores", setores);
+
         return "index";
     }
 

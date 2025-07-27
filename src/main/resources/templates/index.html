@@ -41,18 +41,19 @@
     <div class="container-fluid">
         <div class="row mt-3 vh-100">
             <div class="col-md-4">
-                    <form action="">
+                    <form action="/pesquisar" method="get">
                         <div class="mb-3">
                             <label for="setor" class="form-label">Selecione o setor</label>
-                            <select class="form-select" aria-label="Default select example" id="setor">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
+                            <select class="form-select" aria-label="Default select example" name="setor" id="setor">
+                              <option th:each="s : ${setores}" 
+                                      th:value="${s.id}" 
+                                      th:text="${s.nome}">
+                              </option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="data" class="form-label">Selecione a data</label>
-                            <input id="data" type="date" class="form-control" />
+                            <input id="data" type="date" name="data" class="form-control" autofocus required/>
                         </div>
                         <div class="mb-3 d-flex justify-content-center">
                             <button type="submit" class="btn btn-primary">Pesquisar</button>
@@ -72,117 +73,14 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th>1</th>
-                        <td>39</td>
-                        <td>04/05/2025</td>
-                        <td>00:00</td>
-                        <td>02:00</td>
-                        <td>Joe</td>
-                      </tr>
-                      <tr>
-                        <th>1</th>
-                        <td>39</td>
-                        <td>04/05/2025</td>
-                        <td>00:00</td>
-                        <td>02:00</td>
-                        <td>Joe</td>
-                      </tr>
-                      <tr>
-                        <th>1</th>
-                        <td>39</td>
-                        <td>04/05/2025</td>
-                        <td>00:00</td>
-                        <td>02:00</td>
-                        <td>Joe</td>
-                      </tr>
-                      <tr>
-                        <th>1</th>
-                        <td>39</td>
-                        <td>04/05/2025</td>
-                        <td>00:00</td>
-                        <td>02:00</td>
-                        <td>Joe</td>
-                      </tr>
-                      <tr>
-                        <th>1</th>
-                        <td>39</td>
-                        <td>04/05/2025</td>
-                        <td>00:00</td>
-                        <td>02:00</td>
-                        <td>Joe</td>
-                      </tr>
-                      <tr>
-                        <th>1</th>
-                        <td>39</td>
-                        <td>04/05/2025</td>
-                        <td>00:00</td>
-                        <td>02:00</td>
-                        <td>Joe</td>
-                      </tr>
-                      <tr>
-                        <th>1</th>
-                        <td>39</td>
-                        <td>04/05/2025</td>
-                        <td>00:00</td>
-                        <td>02:00</td>
-                        <td>Joe</td>
-                      </tr>
-                      <tr>
-                        <th>1</th>
-                        <td>39</td>
-                        <td>04/05/2025</td>
-                        <td>00:00</td>
-                        <td>02:00</td>
-                        <td>Joe</td>
-                      </tr><tr>
-                        <th>1</th>
-                        <td>39</td>
-                        <td>04/05/2025</td>
-                        <td>00:00</td>
-                        <td>02:00</td>
-                        <td>Joe</td>
-                      </tr>
-                      <tr>
-                        <th>1</th>
-                        <td>39</td>
-                        <td>04/05/2025</td>
-                        <td>00:00</td>
-                        <td>02:00</td>
-                        <td>Joe</td>
-                      </tr>
-                      <tr>
-                        <th>1</th>
-                        <td>39</td>
-                        <td>04/05/2025</td>
-                        <td>00:00</td>
-                        <td>02:00</td>
-                        <td>Joe</td>
-                      </tr>
-                      <tr>
-                        <th>1</th>
-                        <td>39</td>
-                        <td>04/05/2025</td>
-                        <td>00:00</td>
-                        <td>02:00</td>
-                        <td>Joe</td>
-                      </tr>
-                      <tr>
-                        <th>1</th>
-                        <td>39</td>
-                        <td>04/05/2025</td>
-                        <td>00:00</td>
-                        <td>02:00</td>
-                        <td>Joe</td>
-                      </tr>
-                      <tr>
-                        <th>1</th>
-                        <td>39</td>
-                        <td>04/05/2025</td>
-                        <td>00:00</td>
-                        <td>02:00</td>
-                        <td>Joe</td>
-                      </tr>
+                      <tr th:each="a : ${abastecimentos}">
+                        <td th:text="${a.setor.nome}">Setor</td>
+                        <td th:text="${a.volumeAgua}">Quantidade de Água</td>
+                        <td th:text="${#temporals.format(a.horaInicio, 'dd/MM/yyyy')}">Data</td>
+                        <td th:text="${#temporals.format(a.horaInicio, 'HH:mm')}">Hora Início</td>
+                        <td th:text="${#temporals.format(a.horaFim, 'HH:mm')}">Hora Fim</td>
+                        <td th:text="${a.administrador.nome}">Adm</td>
+                     </tr>
                   </table>
             </div>
         </div>
