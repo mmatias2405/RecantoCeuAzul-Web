@@ -3,6 +3,8 @@ package com.recantoceuazul.web.model;
 import java.time.LocalDateTime;
 
 public class Abastecimento {
+    public Abastecimento() {
+    }
     public Abastecimento(Float volumeAgua, LocalDateTime horaInicio, LocalDateTime horaFim, Setor setor,
             Administrador administrador) {
         this.volumeAgua = volumeAgua;
@@ -23,6 +25,8 @@ public class Abastecimento {
     private Setor setor;
     
     private Administrador administrador;
+
+    
 
     public Integer getId() {
         return id;

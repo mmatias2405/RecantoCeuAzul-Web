@@ -1,8 +1,11 @@
 package com.recantoceuazul.web.model;
 
+
 public class Setor {
     private int id;
     private String nome;
+
+    public Setor(){}
     public int getId() {
         return id;
     }

@@ -3,6 +3,8 @@ package com.recantoceuazul.web.model;
 import java.time.LocalDateTime;
 
 public class Captacao {
+    public Captacao() {}
+    
     public Captacao(Float volumeAgua, LocalDateTime hora) {
         this.volumeAgua = volumeAgua;
         this.hora = hora;
