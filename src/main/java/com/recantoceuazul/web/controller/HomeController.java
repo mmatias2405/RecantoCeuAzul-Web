@@ -25,6 +25,26 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "login";
+    }
+
+    @GetMapping("/consumo")
+    public String consumo(Model model) {
+        return "registrarConsumo";
+    }
+
+    @GetMapping("/captacao")
+    public String captacao(Model model) {
+        return "registrarCaptacao";
+    }
+
+    @GetMapping("/setor")
+    public String setor(Model model) {
+        return "registrarSetor";
+    }
+
     @PostMapping("/salvar")
     public String salvar(@ModelAttribute Administrador administrador) {
         HttpHeaders headers = new HttpHeaders();
